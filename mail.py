@@ -6,6 +6,7 @@ from email.utils import formatdate
 import datetime
 import logging
 import logging.handlers
+import os
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
@@ -56,6 +57,10 @@ def send_mail(name, send_from, send_to, subject, message, server, port, username
 
 try:
   formatted_date in date_dict.keys()
+  try:
+    SOME_SECRET = os.environ["SOME_SECRET"]
+  except:
+    logger.error('Token not available!')
   info_email_subject = f"Happy Birthday {date_dict[formatted_date]['emogi']}"
   name = date_dict[formatted_date]['name']
   info_email_body = f"Hiiii {name},\nHere's to another incredible year of life! Wishing you a birthday that's as awesome as you are...😊\n"
@@ -63,7 +68,7 @@ try:
   send_to = date_dict[formatted_date]['email']
   Server = 'smtp.gmail.com'
   Port = 587
-  sender_email_id_password = 'lrepniwmidpoktij'
+  sender_email_id_password = str(SOME_SECRET) #'lrepniwmidpoktij'
   send_mail(name, send_from, send_to, subject=info_email_subject, message=info_email_body, server=Server, port=Port, username=send_from, password=sender_email_id_password, message_type='plain', use_tls=True)
 except:
   logger.info('No birthday today')
