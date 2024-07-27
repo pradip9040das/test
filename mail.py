@@ -68,7 +68,7 @@ try:
   send_to = date_dict[formatted_date]['email']
   Server = 'smtp.gmail.com'
   Port = 587
-  sender_email_id_password = str(SOME_SECRET) #'lrepniwmidpoktij'
+  sender_email_id_password = str(SOME_SECRET) 
   send_mail(name, send_from, send_to, subject=info_email_subject, message=info_email_body, server=Server, port=Port, username=send_from, password=sender_email_id_password, message_type='plain', use_tls=True)
 except:
   logger.info('No birthday today')
