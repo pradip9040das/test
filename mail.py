@@ -45,7 +45,7 @@ def send_mail(name, send_from, send_to, subject, message, server, port, username
       msg.attach(MIMEText(message, message_type))
       smtp = smtplib.SMTP(server, port)
       if use_tls:
-          smtpb.starttls()
+          smtp.starttls()
       smtp.login(username, password)
       smtp.sendmail(send_from, send_to, msg.as_string())
       logger.info(f"Email successfully sent to {name}")
