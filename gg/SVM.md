@@ -34,7 +34,7 @@ $\textbf{w}$ is the normal to the line and $b$ is bias. Also $\textbf{w}$ is kno
 ## Sketch Derivation
 
 - Since $\textbf{w}^T\textbf{x}+b=0$ and $c(\textbf{w}^T\textbf{x}+b)=0$ defins same plane, we have the freedom to choose the normalization of $\textbf{w}$.
-- Choose a normalization such that $\textbf{w}^T\textbf{x}_{+} +b = 1$, $\textbf{w}^T\\textbf{x}_{-}+b=-1$ for the positive and negitive support vectors respectively.
+- Choose a normalization such that $\textbf{w}^T\textbf{x}_{+} +b = 1$ for the positive and negitive support vectors respectively.
 
 - Then the *margin* is given by
 
