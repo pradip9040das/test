@@ -50,8 +50,8 @@ max_\textbf{w} \frac{2}{||\textbf{w}|||}~ \text{subject to } \textbf{w}^T\textbf
 $$
 Or equivalently
 $$
-\color{green}
-min_\textbf{w} \frac{||\textbf{w}||^2}{2}~\text{subject to}~ y_i(\textbf{w}^T\textbf{x}+b)\geq 1~\text{for}~i=1,..., N
+\color{green}{
+min_\textbf{w} \frac{||\textbf{w}||^2}{2}~\text{subject to}~ y_i(\textbf{w}^T\textbf{x}+b)\geq 1~\text{for}~i=1,..., N}
 $$
 This is a quardatic optimization problem subject to linear constrains and there is a unique minimum.
 
