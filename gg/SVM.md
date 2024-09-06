@@ -23,9 +23,11 @@ Linearly Separable|[img]
 
 **Linear Classifier:**
 A linear classifier has a form
+
 $$
     f(\textbf{x})=\textbf{w}^T\textbf{x} + b
 $$
+
 $\textbf{w}$ is the normal to the line and $b$ is bias. Also $\textbf{w}$ is known as a witght vector.
 
 ## Sketch Derivation
@@ -33,6 +35,7 @@ $\textbf{w}$ is the normal to the line and $b$ is bias. Also $\textbf{w}$ is kno
 - Choose a normalization such that $\textbf{w}^T\textbf{x}_++b=1$ Nd $\textbf{w}^T\textbf{x}_-+b=-1$ for the positive and negitive support vectors respectively.
 
 - Then the *margin* is given by
+
 $$
 \frac{\textbf{w}}{||\textbf{w}||}\cdot(\textbf{x}_+ - \textbf{x}_-)=\frac{\textbf{w}^T(\textbf{x}_+ - \textbf{x}_-)}{||\textbf{w}||} =  \frac{2}{||\textbf{w}||}
 $$
@@ -40,6 +43,7 @@ $$
 ## Optimization - Hard Margin
 
 Learning the SVM can be formulated as an optimization:
+
 $$
 max_\textbf{w} \frac{2}{||\textbf{w}|||}~ \text{subject to } \textbf{w}^T\textbf{x}+b
     \begin{cases}
@@ -48,11 +52,14 @@ max_\textbf{w} \frac{2}{||\textbf{w}|||}~ \text{subject to } \textbf{w}^T\textbf
     \end{cases}
 \text{for} ~i=1,...,N
 $$
+
 Or equivalently
+
 $$
 \color{green}{
 min_\textbf{w} \frac{||\textbf{w}||^2}{2}~\text{subject to}~ y_i(\textbf{w}^T\textbf{x}+b)\geq 1~\text{for}~i=1,..., N}
 $$
+
 This is a quardatic optimization problem subject to linear constrains and there is a unique minimum.
 
 **Primal Problem:**
