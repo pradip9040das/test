@@ -22,6 +22,7 @@ Linearly Separable|[img]
 <span style="color:red;">Not</span> Linearly Separable|[img]
 
 **Linear Classifier:**
+
 A linear classifier has a form
 
 $$
