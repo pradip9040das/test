@@ -294,8 +294,7 @@ With Kernel function the Wolfe dual Lagrangian function is
 
 $$
 \color{green}{
-max_{\alpha} W(\alpha)=\sum_{i=1}^N\alpha_i-\frac{1}{2}\sum_{i=1}^Ny_iy_j\alpha_i\alpha_jK(\textbf{x}_i,\textbf{x}_j)\\
-s.t. C\geq\alpha_i\geq0, i=1,...,N \text{and} \sum_{i=1}^N\alpha_iy_i=0
+max_{\alpha} W(\alpha)=\sum_{i=1}^N\alpha_i-\frac{1}{2}\sum_{i=1}^Ny_iy_j\alpha_i\alpha_jK(\textbf{x}_i,\textbf{x}_j)
 }
 $$
 
