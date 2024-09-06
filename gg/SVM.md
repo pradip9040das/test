@@ -24,7 +24,7 @@ Linearly Separable|[img]
 **Linear Classifier:**
 A linear classifier has a form
 $$
-f(\textbf{x})=\textbf{w}^T\textbf{x} +b
+    f(\textbf{x})=\textbf{w}^T\textbf{x} + b
 $$
 $\textbf{w}$ is the normal to the line and $b$ is bias. Also $\textbf{w}$ is known as a witght vector.
 
