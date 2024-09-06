@@ -39,7 +39,7 @@ $\textbf{w}$ is the normal to the line and $b$ is bias. Also $\textbf{w}$ is kno
 - Then the *margin* is given by
 
 $$
-\frac{\textbf{w}}{||\textbf{w}||}\cdot(\textbf{x}_+ - \textbf{x}_-)=\frac{\textbf{w}^T(\textbf{x}_+ - \textbf{x}_-)}{||\textbf{w}||} =  \frac{2}{||\textbf{w}||}
+\frac{\textbf{w}}{||\textbf{w}||}\cdot(\textbf{x}_+ 
 $$
 
 ## Optimization - Hard Margin
