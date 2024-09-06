@@ -2,7 +2,7 @@
 
 ## Binary Classification
 
-Given a training data $(\textbf{x}_i, y_i)$ for $i= 1, .., N$, with $\textbf{x}_i\in \mathbb{R}^d$ and $y_i\in `\{-1, 1 \}`$, learn a classifier $f(\textbf{x})$ such that
+Given a training data $(\textbf{x}_i, y_i)$ for $i= 1, .., N$, with $\textbf{x}_i\in \mathbb{R}^d$ and $y_i\in \\{-1, 1 \\}$, learn a classifier $f(\textbf{x})$ such that
 
 $$
 \color{blue}{
