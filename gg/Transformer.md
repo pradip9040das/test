@@ -54,6 +54,7 @@ $$
 &PE_{(pos, 2i+1)}=\cos(pos/10000^{2i/d_{model}})
 \end{align}
 $$
+
 where $pos$ is the position and $i$ is the dimension
 
 **4. Input and Output Embeddings:**
