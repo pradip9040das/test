@@ -20,7 +20,7 @@ sub-layers. The first is a *multi-head self-attention mechanism* and the second 
   - The ''multi-head'' aspect means the self attention mechanism is applied multiple times in parallel, alowing the model to jointly attend to information from different representation subspaces at different position.
 
 - **Feed-Forward Neural Network (FFNN):**
-- After the self-attention step, each position's output is passed through a feed-forward neural network. This is applied separately and identically to each position making the network more powerful.
+  - After the self-attention step, each position's output is passed through a feed-forward neural network. This is applied separately and identically to each position making the network more powerful.
 
 - **Residual Connections and Layer Normalization:**
   - Each sub-layer (self-attention and FFNN) in the encoder has a residual connection around it, followed by layer normalization. This helps in stabilizing the training process and prevents vanishing gradients. That is, the output of each sub-layer is
@@ -34,15 +34,15 @@ sub-layers. The first is a *multi-head self-attention mechanism* and the second 
 The decoder is also composed of a stack of $N=6$ identical layers, but each layer has three main components:
 
 - **Masked Multi-Head Self-Attention Mechanism:**
-- Similar to the encoder's multi-head self-attention, but with a mask applied to prevent attending to future tokens.  This
+  - Similar to the encoder's multi-head self-attention, but with a mask applied to prevent attending to future tokens.  This
   masking, combined with fact that the output embeddings are offset by one position, ensures that the
   predictions for position $i$ can depend only on the known outputs at positions less than $i$. This masking is critical for autoregressive tasks like language generation.
 - **Multi-Head Attention over Encoder's Output:**
   - This layer allows the decoder to attend to all positions in the input sequence, helping it generate accurate outputs based on the entier input context. It uses <span style="color:red;">the encoder's output as "key" and "value"</span> and <span style="color:red;">the decoder's output as the queries</span>.
 - **Feed-Forward Neural Network (FFNN):**
-- Like in the encoder, a feed-forward network is applied at each position after the multi-head attention layer.
+  - Like in the encoder, a feed-forward network is applied at each position after the multi-head attention layer.
 - **Residual Connections and Layer Normalization:**
-- Similar to the encoder, residual connections and layer normalization are applied to stabilize and normalize the output.
+  - Similar to the encoder, residual connections and layer normalization are applied to stabilize and normalize the output.
 
 **3. Positional Encoding:**
 
@@ -87,4 +87,99 @@ $$
 
 - While the linear transformations are the same across different positions, they use different parameters from layer to layer.  Another way of describing this is as two convolutions with kernel size 1
 
-- The dimensionality of input and output is $d_{model} = 512$, and the inner-layer has dimensionality $d_{f~f} = 2048$. i.e. dimension of $W_1$ is $(d_{model}, d_{f~f})$ and dimension of $W_2$ is $(d_{f~f}, d_{model})$
+- The dimensionality of input and output is $d_{model} = 512$, and the inner-layer has dimensionality $d_{ff} = 2048$. i.e. dimension of $W_1$ is $(d_{model}, d_{ff})$ and dimension of $W_2$ is $(d_{ff}, d_{model})$
+
+## Example: Positional Encoding
+
+Suppose we have a model with a dimension size $d_{model} = 8$. This means that each input embedding vector has $8$ dimensions. We will compute the positional encoding for the first few positions. For simplicity, we'll calculate the positional encoding for the first three positions $(pos = 0, 1, 2)$ and for all dimensions $i = 0, 1, 2, 3$.
+
+### Step-by-step Calculations
+
+- $d_{\text{model}} = 8$
+- $i$ ranges from $0$ to $3$ (since each pair of $2i$ and $2i+1$ covers two dimensions out of $8$)
+- $10000^{\frac{2i}{d_{\text{model}}}} = 10000^{\frac{i}{4}}$
+
+**For Position $pos = 0$:**
+
+$$
+PE(0, 2i) = \sin \left( \frac{0}{10000^{\frac{i}{4}}} \right) = \sin(0) = 0
+$$
+
+$$
+PE(0, 2i+1) = \cos \left( \frac{0}{10000^{\frac{i}{4}}} \right) = \cos(0) = 1
+$$
+
+Thus, for $pos = 0$, the positional encoding is:
+
+$$
+[0, 1, 0, 1, 0, 1, 0, 1]
+$$
+
+**For Position $pos = 1$:**
+
+$$
+PE(1, 2i) = \sin \left( \frac{1}{10000^{\frac{i}{4}}} \right)
+$$
+
+$$
+PE(1, 2i+1) = \cos \left( \frac{1}{10000^{\frac{i}{4}}} \right)
+$$
+
+Calculations for each dimension:
+
+- For $i = 0$:
+  - $PE(1, 0) = \sin(1) \approx 0.8415$
+  - $PE(1, 1) = \cos(1) \approx 0.5403$
+- For $i = 1$:
+  - $PE(1, 2) = \sin(0.01) \approx 0.009999$
+  - $PE(1, 3) = \cos(0.01) \approx 0.99995$
+- For $i = 2$:
+  - $PE(1, 4) = \sin(0.001) \approx 0.001$
+  - $PE(1, 5) = \cos(0.001) \approx 0.9999995$
+- For $i = 3$:
+  - $PE(1, 6) = \sin(0.0001) \approx 0.0001$
+  - $PE(1, 7) = \cos(0.0001) \approx 0.999999995$
+
+Thus, for $pos = 1$, the positional encoding is approximately:
+
+$$
+[0.8415, 0.5403, 0.01, 0.99995, 0.001, 0.9999995, 0.0001, 0.999999995]
+$$
+
+**For Position $pos = 2$:**
+
+$$
+PE(2, 2i) = \sin \left( \frac{2}{10000^{\frac{i}{4}}} \right)
+$$
+
+$$
+PE(2, 2i+1) = \cos \left( \frac{2}{10000^{\frac{i}{4}}} \right)
+$$
+
+Calculations for each dimension:
+
+- For $i = 0$:
+  - $PE(2, 0) = \sin(2) \approx 0.9093$
+  - $PE(2, 1) = \cos(2) \approx -0.4161$
+- For $i = 1$:
+  - $PE(2, 2) = \sin(0.02) \approx 0.0199987$
+  - $PE(2, 3) = \cos(0.02) \approx 0.9998$
+- For $i = 2$:
+  - $PE(2, 4) = \sin(0.002) \approx 0.002$
+  - $PE(2, 5) = \cos(0.002) \approx 0.999998$
+- For $i = 3$:
+  - $PE(2, 6) = \sin(0.0002) \approx 0.0002$
+  - $PE(2, 7) = \cos(0.0002) \approx 0.99999998$
+
+Thus, for $pos = 2$, the positional encoding is approximately:
+
+$$
+[0.9093, -0.4161, 0.0199987, 0.9998, 0.002, 0.999998, 0.0002, 0.99999998]
+$$
+
+These encodings are added to the input embeddings to help the Transformer understand the positional relationships between tokens in the sequence. The different frequencies captured by sine and cosine functions at different dimensions allow the model to learn both local and global positional information.
+
+
+## Ref
+- https://arxiv.org/pdf/1706.03762 (Attention Is All You Need)
+- http://jalammar.github.io/illustrated-transformer/
