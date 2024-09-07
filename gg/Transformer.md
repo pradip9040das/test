@@ -76,3 +76,15 @@ where $pos$ is the position and $i$ is the dimension
 <div style="text-align: center;">
     <img src="https://jalammar.github.io/images/t/The_transformer_encoder_decoder_stack.png" width="400">
 </div>
+
+## More on Position-wise Feed-Forward Networks
+
+- This consists of two linear transformation with a `ReLU` activation in between
+
+$$
+\text{FFN}(x)=\max(0, xW_1+b_1)W_2+b_2
+$$
+
+- While the linear transformations are the same across different positions, they use different parameters from layer to layer.  Another way of describing this is as two convolutions with kernel size 1
+
+- The dimensionality of input and output is $d_{model} = 512$, and the inner-layer has dimensionality $d_{f~f} = 2048$. i.e. dimension of $W_1$ is $(d_{model}, d_{f~f})$ and dimension of $W_2$ is $(d_{f~f}, d_{model})$
