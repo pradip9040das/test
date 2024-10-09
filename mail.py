@@ -7,6 +7,7 @@ import datetime
 import logging
 import logging.handlers
 import os
+import decrypt
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
@@ -23,18 +24,7 @@ logger.addHandler(logger_file_handler)
 today = datetime.date.today()
 formatted_date = today.strftime('%d-%m')
 
-date_dict = {
-    '10-02' : {
-        'name' : 'Dhananjay',
-        'email' : 'dhananjaymath7@gmail.com',
-        'emogi' : '🥳'
-    },
-    '27-07' : {
-        'name' : 'Dipti',
-        'email' : 'photorphoto1@gmail.com',
-        'emogi' : '🍻'
-    }
-}
+date_dict = decrypt.decrypt_database(str(DECRYPTED_KEY))
 
 def send_mail(name, send_from, send_to, subject, message, server, port, username, password, message_type='plain', use_tls=True):
     try:
