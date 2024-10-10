@@ -24,7 +24,7 @@ today = datetime.date.today().strftime('%d-%m')
 
 # Example usage
 yaml_file = '.github/workflows/actions.yml'
-log_extension = get_extension_from_yaml(yaml_file)
+log_extension = os.environ["log_extension"]
 
 print(log_extension)
 
