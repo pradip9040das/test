@@ -27,12 +27,16 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           
-      - name: execute py script # run main.py
+      - name: execute first script
         env:
           SOME_SECRET: ${{ secrets.SOME_SECRET }}
           DECRYPTED_KEY: ${{ secrets.DECRYPTED_KEY }}
           log_extension: ".log"
         run: python mail.py
+
+      - name: execute second script
+        run: |
+          python clear_log.py
           
       - name: commit files
         run: |
