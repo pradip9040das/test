@@ -9,8 +9,6 @@ on:
 permissions:
   contents: write
 
-log_extension: ".log"
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -33,6 +31,7 @@ jobs:
         env:
           SOME_SECRET: ${{ secrets.SOME_SECRET }}
           DECRYPTED_KEY: ${{ secrets.DECRYPTED_KEY }}
+          log_extension: ".log"
         run: python mail.py
           
       - name: commit files
