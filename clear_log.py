@@ -23,10 +23,10 @@ today = datetime.date.today().strftime('%d-%m')
 
 log_extension = os.getenv('LOG_EXTENSION', '.log')
 
-print(log_extension)
+print(f'log file extension:{log_extension}')
 
 # Search for log files in the current directory
 log_files = find_files_with_extension(log_extension)
 
-if ((log_files) & ((today=='01-01') | (today=='10-10'))):
+if ((log_files != None) & ((today=='01-01') | (today=='10-10'))):
     clear_log(log_files)
