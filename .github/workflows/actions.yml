@@ -9,6 +9,8 @@ on:
 permissions:
   contents: write
 
+log_extension: ".log"
+
 jobs:
   build:
     runs-on: ubuntu-latest
