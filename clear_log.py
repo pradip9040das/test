@@ -21,10 +21,7 @@ def clear_log(file_path):
 
 today = datetime.date.today().strftime('%d-%m')
 
-
-# Example usage
-yaml_file = '.github/workflows/actions.yml'
-log_extension = os.environ["log_extension"]
+log_extension = os.getenv('LOG_EXTENSION', '.log')
 
 print(log_extension)
 
