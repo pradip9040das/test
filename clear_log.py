@@ -23,7 +23,7 @@ today = datetime.date.today().strftime('%d-%m')
 
 
 # Example usage
-yaml_file = 'actions.yml'
+yaml_file = '.github/workflows/actions.yml'
 log_extension = get_extension_from_yaml(yaml_file)
 
 # Search for log files in the current directory
