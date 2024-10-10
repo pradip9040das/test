@@ -26,6 +26,8 @@ today = datetime.date.today().strftime('%d-%m')
 yaml_file = '.github/workflows/actions.yml'
 log_extension = get_extension_from_yaml(yaml_file)
 
+print(log_extension)
+
 # Search for log files in the current directory
 log_files = find_files_with_extension(log_extension)
 
