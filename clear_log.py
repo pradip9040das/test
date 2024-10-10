@@ -17,6 +17,7 @@ def clear_log(file_path):
     # Open the file in write mode to clear it
     with open(file_path, 'w') as file:
         pass  # No content is written, so the file is cleared
+    print('log refreshed')
 
 today = datetime.date.today().strftime('%d-%m')
 
