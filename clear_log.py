@@ -6,7 +6,7 @@ import sys
 today = datetime.date.today().strftime('%d-%m')
 
 try:
-    if(today not in ['01-01', '01-10']):
+    if(today not in ['01-01', '10-10']):
         sys.exit(1) 
 
     # Function to read YAML file and get the extension
