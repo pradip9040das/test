@@ -11,7 +11,7 @@ def get_extension_from_yaml(yaml_file):
 # Function to find files with the specified extension
 def find_files_with_extension(extension, directory='.'):
     log_files = [f for f in os.listdir(directory) if f.endswith(extension)]
-    return log_files
+    return log_files[0]
 
 def clear_log(file_path):
     # Open the file in write mode to clear it
